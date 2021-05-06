@@ -1,0 +1,314 @@
+@import '../scss/colors';
+@import '../scss/fonts';
+@import '../scss/mixins';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: $bg--100;
+	padding: 0;
+	margin: 0;
+	font-family: 'open_sans';
+}
+
+// --------------------- NAVBAR COMPONENTS ---------------
+nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1em 5em;
+
+	.logo {
+		display: flex;
+
+		&__img {
+			height: 70px;
+			padding-right: 1em;
+		}
+
+		&__text {
+			align-self: center;
+			margin: 0;
+			color: $color--400;
+			font-size: 2rem;
+			font-family: 'Norse', cursive;
+			font-weight: bold;
+		}
+	}
+
+	.navbar {
+		align-self: center;
+
+		.modal {
+			display: none;
+		}
+
+		&__list {
+			display: flex;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			&--item {
+				padding: 0 0.5em;
+
+				.navbar__links {
+					color: $color--200;
+					font-size: 1.05rem;
+					font-family: 'open_sans', sans-serif;
+					font-weight: bolder;
+					text-decoration: none;
+					transition: all 0.2s ease;
+
+					&:hover {
+						color: $color--100;
+					}
+				}
+			}
+
+			.fa-times {
+				display: none;
+			}
+		}
+
+		&__menu {
+			display: none;
+		}
+	}
+
+	@include tablet-mobile {
+		display: flex;
+		justify-content: space-betweens;
+		margin: 0.5em 1em 0;
+
+		.logo {
+			&__img {
+				padding-right: 0.2em;
+			}
+		}
+
+		.navbar {
+			.modal {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-color: #fff;
+				animation: modal 2s ease-in-out;
+			}
+
+			@keyframes modal {
+				0% {
+					background-color: #000;
+					opacity: 0.1;
+					transform: translateY(-10em);
+				}
+
+				50% {
+					opacity: 1;
+					transform: translateY(1em);
+				}
+
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			&__list {
+				display: none;
+
+				.navbar__links {
+					font-size: 2rem;
+					color: $color--400;
+				}
+
+				.hide {
+					display: none;
+				}
+
+				.fa-times {
+					display: inline-block;
+					position: absolute;
+					top: 6em;
+					right: 2.5em;
+					color: lightblue;
+				}
+			}
+
+			&__menu {
+				display: inline-block;
+				color: lightblue;
+			}
+		}
+	}
+}
+
+// --------------------- HEADER COMPONENTS ---------------
+.header {
+	background-image: linear-gradient(to bottom, #fff, #eee);
+	height: 50%;
+	width: 100%;
+
+	&__title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		margin-top: 2em;
+
+		& > *:nth-child(-n + 2) {
+			margin: 0;
+			padding-bottom: 1em;
+		}
+
+		&--heading {
+			color: $color--500;
+			font-size: 2.2rem;
+			font-weight: 300;
+		}
+
+		&--paragraph {
+			color: $color--100;
+			font-size: 1.1rem;
+		}
+
+		&--link {
+			padding-bottom: 4em;
+			color: $color--400;
+			transition: all 0.2s ease-in;
+
+			&:hover {
+				color: $color--200;
+				text-decoration: none;
+			}
+		}
+
+		&--btn {
+			padding: 1.25em 4em;
+			border-radius: 0.2em;
+			border: none;
+			background-color: $bg--400;
+			color: $bg--100;
+			box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+			font-size: 1rem;
+			font-weight: 600;
+			text-transform: capitalize;
+			transition: all 0.2s ease-in;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $bg--500;
+			}
+		}
+
+		@include tablet {
+			padding: 0 0.5em;
+		}
+
+		@include mobile-large {
+			padding: 0 1em;
+		}
+
+		@include mobile-small {
+			padding: 0 0.5em;
+		}
+	}
+
+	&__hero {
+		margin-top: 3em;
+
+		&--img {
+			height: 100%;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+	}
+}
+
+// --------------------- HOW IT WORKS COMPONENTS ---------------
+.hiw {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 0.5fr 1fr;
+	grid-template-areas:
+		'mainContent mainContent mainContent'
+		'subFirst subSecond subThird';
+	grid-gap: 1em;
+	justify-content: center;
+	height: 100vh;
+	padding: 2em 10em;
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 2em 4em;
+
+		& > * {
+			margin: 0;
+		}
+
+		&--heading {
+			margin: 1em 0;
+		}
+
+		&--para {
+			color: $color--200;
+			font-size: 1.2rem;
+		}
+	}
+
+	.mainContent {
+		grid-area: mainContent;
+	}
+	.subFirst {
+		grid-area: subFirst;
+	}
+	.subSecond {
+		grid-area: subSecond;
+	}
+	.subThird {
+		grid-area: subThird;
+	}
+
+	@include tablet-mobile {
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(4, 1fr);
+		grid-template-areas:
+			'mainContent  '
+			'subFirst  '
+			'subSecond'
+			'subThird';
+		padding: 0.5em 1em;
+
+		.mainContent {
+			grid-area: mainContent;
+		}
+		.subFirst {
+			grid-area: subFirst;
+		}
+		.subSecond {
+			grid-area: subSecond;
+		}
+		.subThird {
+			grid-area: subThird;
+		}
+
+		& > * {
+			padding: 1em 0;
+		}
+	}
+}
