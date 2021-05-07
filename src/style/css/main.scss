@@ -312,3 +312,91 @@ nav {
 		}
 	}
 }
+
+// --------------------- COURSE COMPONENTS ---------------
+.course {
+	height: auto;
+	padding: 2em 20em;
+	background-color: $bg--200;
+
+	&__heading {
+		text-align: center;
+	}
+
+	&__section {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		grid-template-rows: repeat(3, 1fr);
+		grid-gap: 1.5em;
+		margin: 3em 0;
+
+		&--box {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			padding: 1.5em 2em;
+			background-color: #fff;
+			box-shadow: 1px 1px 5px 1px rgba(107, 107, 107, 0.1);
+			transition: all 0.5s ease;
+
+			&:hover {
+				background-color: lightblue;
+			}
+
+			a {
+				color: $color--300;
+				text-decoration: none;
+
+				.boxes__img {
+					height: 10em;
+					width: 10em;
+				}
+
+				.boxes__title {
+					margin: 1em 0 0.5em;
+					text-align: center;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+	&__button {
+		display: block;
+		margin: 0 auto;
+		padding: 0.6em 2em;
+		border: none;
+		border-radius: 3px;
+		background-color: $color--400;
+		color: $bg--100;
+		box-shadow: 1px 1px 5px 1px rgba(155, 155, 155, 0.5);
+		font-size: 1.2rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.2s ease-out;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	@include tablet-mobile {
+		margin-top: 45em;
+		padding: 1em 3em;
+	}
+	@include mobile-large {
+		margin-top: 48em;
+
+		&__heading {
+			font-size: 1.1rem;
+		}
+	}
+	@include mobile-small {
+		margin-top: 52em;
+		padding: 1em;
+
+		&__heading {
+			font-size: 1.2rem;
+		}
+	}
+}
