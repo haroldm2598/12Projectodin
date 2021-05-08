@@ -8,6 +8,11 @@
 	box-sizing: border-box;
 }
 
+html,
+body {
+	scroll-behavior: smooth;
+}
+
 body {
 	background-color: $bg--100;
 	padding: 0;
@@ -398,5 +403,298 @@ nav {
 		&__heading {
 			font-size: 1.2rem;
 		}
+	}
+}
+
+// --------------------- STORIES COMPONENTS ---------------
+.container-bg {
+	background-image: linear-gradient(to bottom, #fff, #eee);
+}
+.stories {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 75em;
+	margin: 0 auto;
+	padding: 1em 2em;
+
+	&__heading {
+		margin: 2em 0;
+		color: $color--100;
+	}
+
+	&__content {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-areas:
+			'first second'
+			'third fourth';
+		grid-gap: 0.5em;
+		width: 100%;
+		margin: 4em 0;
+
+		&--box {
+			display: flex;
+			flex-direction: row;
+			padding-bottom: 3em;
+
+			.img {
+				flex: 5%;
+				align-self: flex-start;
+
+				img {
+					width: 3.125em;
+					height: 3.125em;
+					border-radius: 50%;
+				}
+			}
+
+			.description {
+				flex: 80%;
+
+				& > * {
+					margin: 0;
+				}
+
+				&__heading {
+					color: $color--400;
+					font-size: 1.1rem;
+					font-weight: 600;
+				}
+
+				&__para {
+					color: $color--100;
+					font-weight: 500;
+					line-height: 2;
+				}
+			}
+		}
+
+		.first {
+			grid-area: first;
+		}
+		.second {
+			grid-area: second;
+		}
+		.third {
+			grid-area: third;
+		}
+		.fourth {
+			grid-area: fourth;
+		}
+
+		@include tablet {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: repeat(4, 1fr);
+			grid-template-areas:
+				'first'
+				'second'
+				'third'
+				'fourth';
+			.first {
+				grid-area: first;
+			}
+			.second {
+				grid-area: second;
+			}
+			.third {
+				grid-area: third;
+			}
+			.fourth {
+				grid-area: fourth;
+			}
+		}
+
+		@include mobile {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: repeat(4, 1fr);
+			grid-template-areas:
+				'first'
+				'second'
+				'third'
+				'fourth';
+			.first {
+				grid-area: first;
+			}
+			.second {
+				grid-area: second;
+			}
+			.third {
+				grid-area: third;
+			}
+			.fourth {
+				grid-area: fourth;
+			}
+
+			&--box {
+				padding-bottom: 1em;
+			}
+
+			.img {
+				display: none;
+			}
+		}
+	}
+
+	&__footer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		&--cta {
+			color: $color--200;
+			transition: all 0.5s ease-in;
+
+			&:hover {
+				color: $color--100;
+				text-decoration: none;
+			}
+		}
+
+		&--heading {
+			margin: 1.5em 0 1em;
+			color: $color--200;
+			font-size: 2.5rem;
+			font-weight: 100;
+
+			@include mobile {
+				text-align: center;
+			}
+		}
+
+		&--btn {
+			height: 3em;
+			width: 10em;
+			margin-bottom: 1em;
+			border-radius: 2px;
+			border: none;
+			box-shadow: 1px 1px 5px 1px rgba(107, 107, 107, 0.5);
+			background-color: $bg--400;
+			color: #fff;
+			text-transform: capitalize;
+			font-size: 1.1rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.5s ease-in;
+
+			&:hover {
+				background-color: $bg--500;
+			}
+		}
+	}
+
+	@include tablet {
+		padding: 1.5em 4em;
+	}
+}
+
+// --------------------- FOOTER COMPONENTS ---------------
+.footer {
+	height: 18em;
+	padding: 0 10em;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	&__logo {
+		a {
+			text-decoration: none;
+			display: flex;
+		}
+
+		&--img {
+			height: 4.375em;
+			padding-right: 1em;
+		}
+
+		&--text {
+			align-self: center;
+			margin: 0;
+			color: $color--500;
+			font-family: 'Norse';
+			font-size: 1.5rem;
+		}
+	}
+
+	&__icons {
+		&--link {
+			padding: 0 1em;
+			color: $color--500;
+			font-size: 1.5rem;
+			text-decoration: none;
+			transition: all 0.2s ease-in-out;
+
+			&:hover {
+				color: #000;
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+
+		.list {
+			margin: 0;
+			padding: 0 1em;
+			list-style: none;
+
+			&__item {
+				padding: 0.4em 0;
+
+				&--link {
+					color: $color--200;
+					text-decoration: none;
+					font-weight: 800;
+					transition: all 0.2s ease-in;
+
+					&:hover {
+						color: $color--100;
+					}
+				}
+			}
+		}
+	}
+
+	@include tablet-mobile {
+		padding: 0;
+
+		&__logo {
+			display: none;
+		}
+	}
+
+	@include mobile {
+		height: 10em;
+
+		&__list {
+			display: none;
+		}
+	}
+}
+
+.btnUp {
+	height: 3em;
+	width: 3.5em;
+	border-radius: 5px;
+	position: absolute;
+	right: 6em;
+	bottom: -195em;
+	background-color: $bg--400;
+
+	a {
+		margin: 0.1em 0.4em;
+		color: $bg--100;
+		font-size: 2rem;
+
+		i {
+			margin: 0;
+		}
+	}
+
+	@include tablet-mobile {
+		display: none;
 	}
 }
